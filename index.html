@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>52 Gas Street · The UK's first energy-positive multi-storey building · Birmingham</title>
+<meta name="description" content="A 21-storey, 8.5-metre-wide co-living tower clad in solar panels at Gas Street Basin. Heritage meets net zero in Birmingham's historic canal district.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEBEB;
+    --paper-deep:#E2DFDB;
+    --ink:#0E0E0C;
+    --ink-soft:#2C2A26;
+    --brass:#B08D57;
+    --brass-deep:#8A6A3C;
+    --solar:#0B2545;
+    --rule:rgba(14,14,12,.18);
+    --serif:"Instrument Serif", "Times New Roman", Georgia, serif;
+    --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--mono);
+    font-weight:400;
+    font-size:clamp(.84rem, .58rem + .55vw, 1rem);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(1200px 800px at 12% 8%, rgba(176,141,87,.07), transparent 60%),
+      radial-gradient(900px 600px at 92% 110%, rgba(11,37,69,.05), transparent 65%);
+    z-index:0;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    opacity:.045;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .8 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    z-index:1;
+  }
+  main, header, footer{position:relative; z-index:2}
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:400;
+    text-wrap:balance;
+    letter-spacing:-.005em;
+    margin:0;
+  }
+  p{text-wrap:pretty; hyphens:auto; margin:0}
+  a{color:inherit; text-decoration:none}
+
+  /* ── top utility bar ───────────────────────────────────────── */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:1.1rem clamp(1rem, 4vw, 2.5rem) 0;
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .topbar .crest{
+    display:flex; align-items:center; gap:.55rem;
+    font-family:var(--serif);
+    font-style:italic;
+    text-transform:none;
+    letter-spacing:0;
+    font-size:1.18rem;
+    color:var(--ink);
+  }
+  .crest::before{
+    content:""; display:inline-block;
+    width:14px; height:38px;
+    background:linear-gradient(180deg, var(--brass) 0%, var(--brass-deep) 60%, var(--solar) 100%);
+    transform:translateY(8px);
+  }
+  .topbar nav{display:flex; gap:1.6rem}
+  .topbar nav a{position:relative; padding-bottom:.15rem}
+  .topbar nav a::after{
+    content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px;
+    background:var(--ink); transform:scaleX(0); transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .topbar nav a:hover::after{transform:scaleX(1)}
+  @media (max-width:780px){
+    .topbar nav{display:none}
+  }
+
+  /* ── HERO ──────────────────────────────────────────────────── */
+  .hero{
+    padding:clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2.5rem) clamp(2.5rem, 6vw, 5rem);
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) min(108px, 14vw);
+    gap:clamp(1rem, 3vw, 3rem);
+    align-items:end;
+    min-height:88vh;
+    position:relative;
+  }
+  .hero__caption{
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-top:1px solid var(--rule);
+    padding-top:.7rem;
+    margin-bottom:1.2rem;
+    display:flex; justify-content:space-between; gap:1rem;
+    flex-wrap:wrap;
+  }
+  .hero__caption span:last-child{color:var(--brass-deep)}
+  .hero__title{
+    font-size:clamp(3.4rem, 14vw, 11.5rem);
+    line-height:.86;
+    letter-spacing:-.025em;
+    margin:0 0 1.3rem;
+  }
+  .hero__title em{font-style:italic; color:var(--brass-deep); display:block; font-size:.78em; padding-left:.06em}
+  .hero__lede{
+    font-family:var(--serif);
+    font-size:clamp(1.15rem, 1.8vw, 1.55rem);
+    line-height:1.35;
+    max-width:46ch;
+    color:var(--ink-soft);
+    border-left:1px solid var(--rule);
+    padding-left:1.1rem;
+    margin-top:1.4rem;
+  }
+  .hero__lede em{color:var(--solar); font-style:italic}
+
+  /* the tower elevation column — references the actual 8.5m × 21-storey form */
+  .elevation{
+    position:relative;
+    align-self:stretch;
+    display:flex; flex-direction:column;
+    min-height:60vh;
+  }
+  .elevation__bar{
+    flex:1;
+    width:100%;
+    background:
+      linear-gradient(90deg, rgba(11,37,69,.95) 0%, rgba(11,37,69,.65) 55%, rgba(11,37,69,.85) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  /* solar-cell texture across the southwest elevation */
+  .elevation__bar::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(135deg, rgba(176,141,87,.08) 0%, transparent 40%);
+    background-size: 100% 4.7619%, 33.33% 4.7619%, auto;
+  }
+  .elevation__bar::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0;
+    height:11%;
+    background:linear-gradient(180deg, transparent, rgba(176,141,87,.55), var(--brass-deep));
+  }
+  .elevation__label{
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    position:absolute;
+    right:calc(100% + .6rem);
+    top:0;
+    height:100%;
+    display:flex; align-items:center; gap:1.2rem; justify-content:space-between;
+  }
+  .elevation__cap{
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding:.5rem 0 0;
+    display:flex; justify-content:space-between;
+    border-top:1px solid var(--rule);
+    margin-top:.6rem;
+  }
+
+  @media (max-width:680px){
+    .hero{grid-template-columns:1fr; min-height:auto}
+    .elevation{min-height:340px}
+    .elevation__label{position:static; writing-mode:horizontal-tb; transform:none; height:auto; padding:.4rem 0}
+  }
+
+  /* ── MARQUEE ───────────────────────────────────────────────── */
+  .marquee{
+    overflow:hidden;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+    background:var(--ink);
+    color:var(--paper);
+    padding:.85rem 0;
+    --speed:48s;
+  }
+  .marquee__track{
+    display:inline-flex; gap:3rem;
+    white-space:nowrap;
+    animation:scroll var(--speed) linear infinite;
+    font-family:var(--serif);
+    font-size:clamp(1.4rem, 3vw, 2.6rem);
+    font-style:italic;
+    letter-spacing:-.01em;
+  }
+  .marquee__track span{display:inline-flex; align-items:center; gap:3rem}
+  .marquee__track span::after{
+    content:"✦";
+    color:var(--brass);
+    font-style:normal;
+    font-size:.8em;
+  }
+  @keyframes scroll{ to{ transform:translateX(-50%) } }
+
+  /* ── SECTION SCAFFOLDING ───────────────────────────────────── */
+  section{
+    padding:clamp(3rem, 8vw, 6.5rem) clamp(1rem, 4vw, 2.5rem);
+    position:relative;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1.4fr);
+    gap:clamp(1.5rem, 5vw, 4.5rem);
+    align-items:start;
+    max-width:1280px; margin:0 auto;
+  }
+  @media (max-width:780px){
+    .grid{grid-template-columns:1fr}
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    margin-bottom:1rem;
+    display:flex; gap:.8rem; align-items:center;
+  }
+  .eyebrow::before{
+    content:""; display:inline-block;
+    width:1.8rem; height:1px; background:var(--brass);
+  }
+  .h2{
+    font-size:clamp(2rem, 4.4vw, 3.6rem);
+    line-height:1;
+    letter-spacing:-.02em;
+    margin-bottom:.8em;
+  }
+  .h2 em{font-style:italic; color:var(--brass-deep)}
+  .body{
+    font-family:var(--serif);
+    font-size:clamp(1.05rem, 1.3vw, 1.3rem);
+    line-height:1.45;
+    color:var(--ink-soft);
+    max-width:54ch;
+  }
+  .body + .body{margin-top:1.1em}
+  .body strong{
+    font-weight:400; font-style:italic; color:var(--ink);
+  }
+  .colophon{
+    font-family:var(--mono);
+    font-size:.74rem;
+    letter-spacing:.04em;
+    color:var(--ink-soft);
+  }
+  .colophon dt{
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    font-size:.62rem;
+    color:var(--brass-deep);
+    margin-bottom:.25rem;
+  }
+  .colophon dd{
+    margin:0 0 1.3rem;
+    padding-bottom:1rem;
+    border-bottom:1px solid var(--rule);
+    color:var(--ink);
+  }
+  .colophon dd:last-child{border-bottom:none}
+
+  /* ── SLAB SECTIONS ─────────────────────────────────────────── */
+  .slab--ink{
+    background:var(--ink); color:var(--paper);
+  }
+  .slab--ink .eyebrow{color:var(--brass)}
+  .slab--ink .eyebrow::before{background:var(--brass)}
+  .slab--ink .body{color:rgba(237,235,235,.78)}
+  .slab--ink .body strong{color:var(--paper)}
+  .slab--ink .h2 em{color:var(--brass)}
+  .slab--ink .colophon{color:rgba(237,235,235,.7)}
+  .slab--ink .colophon dt{color:var(--brass)}
+  .slab--ink .colophon dd{color:var(--paper); border-color:rgba(237,235,235,.18)}
+
+  .slab--paper-deep{background:var(--paper-deep)}
+
+  /* ── STATS BLOCK ───────────────────────────────────────────── */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    margin-top:2.5rem;
+  }
+  .slab--ink .stats{background:rgba(237,235,235,.18); border-color:rgba(237,235,235,.18)}
+  .stat{
+    background:var(--paper);
+    padding:1.5rem 1.2rem 1.3rem;
+  }
+  .slab--ink .stat{background:var(--ink)}
+  .slab--paper-deep .stat{background:var(--paper-deep)}
+  .stat__figure{
+    font-family:var(--serif);
+    font-size:clamp(2rem, 4.5vw, 3.4rem);
+    line-height:1;
+    letter-spacing:-.02em;
+    color:var(--ink);
+  }
+  .slab--ink .stat__figure{color:var(--paper)}
+  .stat__figure sub{
+    font-family:var(--mono);
+    font-size:.36em;
+    vertical-align:baseline;
+    margin-left:.15em;
+    color:var(--brass-deep);
+    letter-spacing:.05em;
+  }
+  .slab--ink .stat__figure sub{color:var(--brass)}
+  .stat__label{
+    font-family:var(--mono);
+    font-size:.65rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:.8rem;
+    line-height:1.45;
+  }
+  .slab--ink .stat__label{color:rgba(237,235,235,.65)}
+
+  /* ── AMENITY LEDGER ────────────────────────────────────────── */
+  .ledger{
+    margin-top:2.5rem;
+    border-top:1px solid var(--rule);
+  }
+  .ledger dl{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    column-gap:1.5rem;
+    margin:0;
+  }
+  .ledger dt, .ledger dd{
+    padding:1.1rem 0;
+    border-bottom:1px solid var(--rule);
+    margin:0;
+  }
+  .ledger dt{
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    padding-right:1rem;
+    min-width:8.5rem;
+  }
+  .ledger dd{
+    font-family:var(--serif);
+    font-size:clamp(1.05rem, 1.6vw, 1.35rem);
+    color:var(--ink);
+  }
+  .slab--ink .ledger{border-color:rgba(237,235,235,.18)}
+  .slab--ink .ledger dt, .slab--ink .ledger dd{border-color:rgba(237,235,235,.18)}
+  .slab--ink .ledger dd{color:var(--paper)}
+  .slab--ink .ledger dt{color:var(--brass)}
+
+  /* ── REVEALS ───────────────────────────────────────────────── */
+  @supports (animation-timeline: view()) {
+    .reveal{
+      animation: rise both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+    @keyframes rise{
+      from{opacity:0; transform:translateY(2.4rem)}
+      to{opacity:1; transform:translateY(0)}
+    }
+  }
+
+  /* scroll progress hairline */
+  .progress{
+    position:fixed; top:0; left:0; right:0; height:2px;
+    transform-origin:0 50%;
+    background:var(--brass);
+    transform:scaleX(0); z-index:50;
+  }
+  @supports (animation-timeline: scroll()) {
+    .progress{
+      animation: bar linear;
+      animation-timeline: scroll(root);
+    }
+    @keyframes bar{ to{ transform:scaleX(1) } }
+  }
+
+  /* ── FOOTER ────────────────────────────────────────────────── */
+  footer{
+    background:var(--ink); color:var(--paper);
+    padding:clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 2.5rem) 2rem;
+    font-family:var(--mono);
+  }
+  .footer__head{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(2rem, 6vw, 4.5rem);
+    line-height:1;
+    letter-spacing:-.02em;
+    margin-bottom:2.5rem;
+    max-width:18ch;
+  }
+  .footer__head em{color:var(--brass)}
+  .footer__grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:2rem 3rem;
+    border-top:1px solid rgba(237,235,235,.18);
+    padding-top:2rem;
+    font-size:.78rem;
+  }
+  .footer__col h4{
+    font-family:var(--mono);
+    font-weight:400;
+    font-size:.62rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 .8rem;
+  }
+  .footer__col p, .footer__col a{
+    color:rgba(237,235,235,.85);
+    line-height:1.6;
+    display:block;
+  }
+  .footer__col a:hover{color:var(--brass); text-decoration:underline; text-underline-offset:3px}
+  .footer__rule{
+    margin-top:2.5rem; padding-top:1.5rem;
+    border-top:1px solid rgba(237,235,235,.18);
+    font-size:.66rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:rgba(237,235,235,.55);
+    display:flex; flex-wrap:wrap; gap:1rem 2rem; justify-content:space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="crest">52 Gas Street</div>
+  <nav>
+    <a href="#site">The Site</a>
+    <a href="#building">The Building</a>
+    <a href="#energy">The Energy</a>
+    <a href="#living">The Living</a>
+    <a href="#status">Status</a>
+  </nav>
+  <div style="text-align:right">B1 · Birmingham</div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero__caption">
+        <span>Project №&nbsp;52&nbsp;·&nbsp;Birmingham, B1</span>
+        <span>Planning submitted · May 2024</span>
+      </div>
+      <h1 class="hero__title">
+        Fifty‑Two<br>
+        Gas Street<em>a narrowhouse</em>
+      </h1>
+      <p class="hero__lede">
+        The UK's first multi-storey <em>energy-positive</em> building. A twenty-one storey tower, eight-and-a-half metres wide, clad in solar panels — drawing surplus electricity from the southwest elevation and returning it, through a local microgrid, to the streets that once burned gas to light themselves.
+      </p>
+    </div>
+
+    <div class="elevation" aria-hidden="true">
+      <div class="elevation__bar">
+        <span class="elevation__label">
+          <span>21F</span>
+          <span>ROOF</span>
+          <span>BIPV façade · SW</span>
+          <span>GF</span>
+        </span>
+      </div>
+      <div class="elevation__cap">
+        <span>↑ 21F</span>
+        <span>8.5m wide</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Energy-positive</span>
+      <span>Net-zero residential</span>
+      <span>Building-integrated photovoltaics</span>
+      <span>Heritage restored</span>
+      <span>Co-living, canal-side</span>
+      <span>Surplus power, shared</span>
+      <span>Energy-positive</span>
+      <span>Net-zero residential</span>
+      <span>Building-integrated photovoltaics</span>
+      <span>Heritage restored</span>
+      <span>Co-living, canal-side</span>
+      <span>Surplus power, shared</span>
+    </div>
+  </div>
+
+  <!-- THE SITE -->
+  <section id="site">
+    <div class="grid reveal">
+      <div>
+        <div class="eyebrow">I · The Site</div>
+        <h2 class="h2">A canal-fronted plot, <em>eight-and-a-half metres wide</em>, opposite the Grade II Toll House.</h2>
+      </div>
+      <div>
+        <p class="body">
+          The plot at 52 Gas Street has been a brownfield gap on Birmingham's historic canal district for years — a sliver of land too narrow for almost any conventional development. Its scale, and the listed Toll House beside it, are not constraints. They are the brief.
+        </p>
+        <p class="body">
+          The scheme restores and repurposes the <strong>Grade II-listed Gas Street Toll House</strong> into new living space, and threads a new public staircase down from Gas Street to the canal towpath — reconnecting two levels of the city that the twentieth century forgot.
+        </p>
+        <dl class="colophon" style="margin-top:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:1.5rem">
+          <div><dt>Location</dt><dd>52 Gas Street, B1</dd></div>
+          <div><dt>District</dt><dd>Gas Street Basin</dd></div>
+          <div><dt>Heritage</dt><dd>Grade II Toll House</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE BUILDING -->
+  <section id="building" class="slab--ink">
+    <div class="grid reveal">
+      <div>
+        <div class="eyebrow">II · The Building</div>
+        <h2 class="h2">A super-slender tower, <em>clad entirely in solar</em>.</h2>
+      </div>
+      <div>
+        <p class="body">
+          The narrow footprint unlocks something unprecedented — a fully integrated <strong>Building-Integrated Photovoltaic façade</strong> running the full height of the southwest elevation, with no obstructing massing to shade it. The form is the energy strategy.
+        </p>
+        <p class="body">
+          Twenty-one storeys of co-living, shared lounges, coworking and rooftop terraces stack inside the eight-and-a-half-metre line. The building is read as a single architectural object — slim, vertical, and unmistakably of its moment.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat__figure">21<sub>storeys</sub></div>
+            <div class="stat__label">Vertical co-living</div>
+          </div>
+          <div class="stat">
+            <div class="stat__figure">8.5<sub>m</sub></div>
+            <div class="stat__label">Site width</div>
+          </div>
+          <div class="stat">
+            <div class="stat__figure">BIPV<sub>·SW</sub></div>
+            <div class="stat__label">Southwest solar façade</div>
+          </div>
+          <div class="stat">
+            <div class="stat__figure">+<sub>net</sub></div>
+            <div class="stat__label">Energy-positive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ENERGY -->
+  <section id="energy" class="slab--paper-deep">
+    <div class="grid reveal">
+      <div>
+        <div class="eyebrow">III · The Energy</div>
+        <h2 class="h2">More electricity out <em>than in</em>. The surplus, shared.</h2>
+      </div>
+      <div>
+        <p class="body">
+          The southwest face is the engine. Sunlight strikes a continuous photovoltaic skin and turns the elevation itself into a generator — enough that the building runs net-positive across the year, producing more than its residents consume.
+        </p>
+        <p class="body">
+          The surplus is routed into a <strong>proposed local microgrid</strong>, distributing clean power to neighbouring buildings — and, in time, potentially lighting Gas Street itself once again. The street that took its name from gaslight, lit by solar.
+        </p>
+        <p class="body" style="font-family:var(--mono); font-size:.85rem; letter-spacing:.04em; max-width:60ch; margin-top:1.5rem; color:var(--ink-soft); line-height:1.7">
+          Aligned with Birmingham's Future City Framework 2045<br>
+          and the West Midlands Net Zero Strategy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LIVING -->
+  <section id="living">
+    <div class="grid reveal">
+      <div>
+        <div class="eyebrow">IV · The Living</div>
+        <h2 class="h2">Co-living for the city's <em>next generation</em>.</h2>
+      </div>
+      <div>
+        <p class="body">
+          The interior is sized for Birmingham's growing population of young professionals — single units, shared facilities, and a building that works as a vertical neighbourhood instead of a stack of strangers.
+        </p>
+        <div class="ledger" aria-label="Amenities">
+          <dl>
+            <dt>Ground</dt><dd>Lobby, café, public staircase to towpath</dd>
+            <dt>Lower</dt><dd>Co-working zones &amp; shared kitchens</dd>
+            <dt>Mid</dt><dd>Gym, cinema room, dining lounges</dd>
+            <dt>Upper</dt><dd>Co-living apartments, single &amp; shared</dd>
+            <dt>Roof</dt><dd>Terrace overlooking canal &amp; city</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUS -->
+  <section id="status" class="slab--ink">
+    <div class="grid reveal">
+      <div>
+        <div class="eyebrow">V · Status</div>
+        <h2 class="h2"><em>Currently</em> in planning.</h2>
+      </div>
+      <div>
+        <p class="body">
+          Planning submitted to Birmingham City Council in May 2024. The scheme is part of GNM Developments' urban regeneration portfolio, working with the local heritage authority to preserve the Grade II Toll House and reopen the canal-side public realm.
+        </p>
+        <p class="body">
+          Updates and renders are posted on Instagram. Press and stakeholder enquiries are welcome through the channels listed below.
+        </p>
+        <dl class="colophon" style="margin-top:2.2rem">
+          <dt>Status</dt><dd>Planning submitted · May 2024</dd>
+          <dt>Stage</dt><dd>Pre-construction · pending consent</dd>
+          <dt>Heritage consultee</dt><dd>Grade II Gas Street Toll House</dd>
+          <dt>Project updates</dt><dd><a href="https://www.instagram.com/52gasstreet/" target="_blank" rel="noopener">@52gasstreet on Instagram ↗</a></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer__head">
+    The street that took its name from gaslight, <em>lit again by sunlight.</em>
+  </div>
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h4>Address</h4>
+      <p>52 Gas Street<br>Gas Street Basin<br>Birmingham, B1</p>
+    </div>
+    <div class="footer__col">
+      <h4>Follow</h4>
+      <a href="https://www.instagram.com/52gasstreet/" target="_blank" rel="noopener">Instagram · @52gasstreet</a>
+    </div>
+    <div class="footer__col">
+      <h4>Designation</h4>
+      <p>UK's first multi-storey<br>energy-positive building</p>
+    </div>
+    <div class="footer__col">
+      <h4>Programme</h4>
+      <p>Planning submitted<br>May 2024</p>
+    </div>
+  </div>
+  <div class="footer__rule">
+    <span>52 Gas Street · A Narrowhouse</span>
+    <span>Birmingham · B1</span>
+    <span>Energy-positive · co-living · canal-side</span>
+  </div>
+</footer>
+
+</body>
+</html>
